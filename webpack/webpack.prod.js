@@ -15,8 +15,17 @@ const getOptions = (env) => {
   if (!isEs5(env)) return {};
 
   return {
+    sourceType: "unambiguous",
     babelrc: false,
-    presets: ["@babel/env"],
+    presets: [
+      [
+        "@babel/env",
+        {
+          corejs: "3",
+          useBuiltIns: "usage",
+        },
+      ],
+    ],
   };
 };
 
